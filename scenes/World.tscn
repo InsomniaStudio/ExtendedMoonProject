@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Textures/PixelTexture (225).png" type="Texture" id=2]
+[ext_resource path="res://assets/TestToolsSprites/moon.jpg" type="Texture" id=3]
+[ext_resource path="res://scenes/MapMaker/GridMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemy/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Enemy/StoneEnemy/StoneEnemy.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 20, 20, 20 )
+
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 5 )
+size = Vector3( 100, 1, 100 )
+
+[sub_resource type="PanoramaSky" id=4]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 4 )
+background_color = Color( 0.188235, 0.117647, 0.117647, 1 )
+background_energy = 2.06
+ambient_light_color = Color( 0.721569, 0.682353, 0.682353, 1 )
+ambient_light_energy = 1.14
+
+[node name="World" type="Spatial"]
+
+[node name="Floor" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.74352 )
+speed = 10
+mouseSens = 0.05
+haveHook = true
+haveHammer = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8918, 0, 0.369436 )
+RangeUp = 20.0
+RangeDown = -5.0
+classicScene = ExtResource( 6 )
+stoneScene = ExtResource( 6 )
+slimeScene = ExtResource( 6 )
+
+[node name="EnemySpawner2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2117, 0, 0.369436 )
+RangeUp = 20.0
+RangeDown = -5.0
+scalingPoint = 2
+scalingValue = 75
+classicScene = ExtResource( 6 )
+stoneScene = ExtResource( 6 )
+slimeScene = ExtResource( 6 )
+
+[node name="GridMap" parent="." instance=ExtResource( 4 )]
+cell_scale = 3.0
+data = {
+"cells": PoolIntArray( 65552, 0, 786436, 131054, 0, 786436, 65552, 1, 786436, 65552, 2, 786436, 65552, 3, 786436, 131054, 3, 786436, 65552, 4, 786436, 65552, 5, 786436, 131054, 5, 786436, 65552, 6, 786436, 65552, 7, 786436, 131054, 7, 786436, 65552, 8, 786436, 131054, 8, 786436, 65552, 9, 786436, 131054, 9, 786436, 131054, 10, 786436, 131054, 11, 786436, 65536, 65529, 786436, 65537, 65529, 786436, 65538, 65529, 786436, 65539, 65529, 786436, 65540, 65529, 786436, 65541, 65529, 786436, 65542, 65529, 786436, 65543, 65529, 786436, 65544, 65529, 786436, 65545, 65529, 786436, 65546, 65529, 786436, 65547, 65529, 786436, 65548, 65529, 786436, 65549, 65529, 786436, 65552, 65529, 786436, 131054, 65529, 786436, 131055, 65529, 786436, 131056, 65529, 786436, 131057, 65529, 786436, 131058, 65529, 786436, 131059, 65529, 786436, 131062, 65529, 786436, 131063, 65529, 786436, 131064, 65529, 786436, 131065, 65529, 786436, 131066, 65529, 786436, 131067, 65529, 786436, 131068, 65529, 786436, 131069, 65529, 786436, 131070, 65529, 786436, 131071, 65529, 786436, 65552, 65530, 786436, 65552, 65531, 786436, 131054, 65531, 786436, 65552, 65532, 786436, 131054, 65532, 786436, 65552, 65533, 786436, 131054, 65533, 786436, 65552, 65534, 786436, 131054, 65534, 786436, 65552, 65535, 786436, 131054, 65535, 786436 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
