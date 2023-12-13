@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -2.0
 margin_top = -66.0
-margin_right = -2.0
+margin_right = 2.0
 margin_bottom = 25.0
 texture = ExtResource( 1 )
 stretch_mode = 4
@@ -56,6 +56,13 @@ margin_right = 151.0
 margin_bottom = 416.0
 text = "Mouse sensitivity:"
 
+[node name="FpsLabel" type="Label" parent="."]
+margin_left = 114.0
+margin_top = 467.0
+margin_right = 245.0
+margin_bottom = 483.0
+text = "Max FPS:"
+
 [node name="Plus" type="Button" parent="."]
 margin_left = 205.0
 margin_top = 426.0
@@ -72,8 +79,26 @@ margin_bottom = 448.0
 text = "-"
 icon_align = 1
 
+[node name="FpsPlus" type="Button" parent="."]
+margin_left = 205.0
+margin_top = 500.0
+margin_right = 230.0
+margin_bottom = 522.0
+text = "+"
+icon_align = 1
+
+[node name="FpsMinus" type="Button" parent="."]
+margin_left = 126.0
+margin_top = 499.0
+margin_right = 151.0
+margin_bottom = 521.0
+text = "-"
+icon_align = 1
+
 [connection signal="pressed" from="NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Plus" to="." method="_on_Plus_pressed"]
 [connection signal="pressed" from="Minus" to="." method="_on_Minus_pressed"]
+[connection signal="pressed" from="FpsPlus" to="." method="_on_FpsPlus_pressed"]
+[connection signal="pressed" from="FpsMinus" to="." method="_on_FpsMinus_pressed"]

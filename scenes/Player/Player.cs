@@ -52,6 +52,7 @@ public class Player : KinematicBody
 		if(mouseSensitivity is MouseSens sens)
 		{
 			mouseSens = (float)sens.sensitivity;
+			Engine.TargetFps = sens.maxFps;
 		}
 		state = STATE.MOVING;
 		scalingPoint = 0;

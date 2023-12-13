@@ -4,4 +4,5 @@ using System;
 public class MouseSens : Resource
 {
     public double sensitivity;
+    public int maxFps;
 }

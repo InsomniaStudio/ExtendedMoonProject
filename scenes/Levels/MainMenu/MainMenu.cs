@@ -7,7 +7,9 @@ public class MainMenu : Control
 	public Resource mouseSens;
 	AudioStreamPlayer musicPlayer;
 	Label mouseLabel;
+	Label fpsLabel;
 	double menuSensitivity;
+	int maxFps;
 	
 	string[] levels = {"res://scenes/Levels/Level1/Level1_1.tscn",
 						"res://scenes/Levels/Level1/Level1_2.tscn",
@@ -26,10 +28,12 @@ public class MainMenu : Control
 		saveGame = ResourceLoader.Load("res://resources/LevelStats.tres");
 		mouseSens = ResourceLoader.Load("res://resources/MouseSens.tres");
 		mouseLabel = GetNode<Label>("MouseSens");
+		fpsLabel = GetNode<Label>("FpsLabel");
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 		musicPlayer = GetParent().GetNode<AudioStreamPlayer>("MusicPlayer");
 		musicPlayer.Play();
 		menuSensitivity = 0.05;
+		maxFps = 30;
 		mouseLabel.Text = "Mouse sensitivity: " + menuSensitivity;
 	}
 
@@ -38,6 +42,7 @@ public class MainMenu : Control
 		if(mouseSens is MouseSens sens)
 		{
 			sens.sensitivity = menuSensitivity;
+			sens.maxFps = maxFps;
 		}    
 		if(saveGame is LevelStats stats)
 		{
@@ -53,6 +58,7 @@ public class MainMenu : Control
 		if(mouseSens is MouseSens sens)
 		{
 			sens.sensitivity = menuSensitivity;
+			sens.maxFps = maxFps;
 		} 
 		if(saveGame is LevelStats stats)
 		{
@@ -95,5 +101,19 @@ public class MainMenu : Control
 		if(menuSensitivity>0)
 			menuSensitivity -= 0.05;
 		mouseLabel.Text = "Mouse sensitivity: " + menuSensitivity;
+	}
+
+	public void _on_FpsPlus_pressed()
+	{
+		if(maxFps < 120)
+			maxFps += 30;
+		fpsLabel.Text = "Max FPS: " + maxFps;
+	}
+
+	public void _on_FpsMinus_pressed()
+	{
+		if(maxFps > 30)
+			maxFps -= 30;
+		fpsLabel.Text = "Max FPS: " + maxFps;
 	}
 }
