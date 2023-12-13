@@ -24,7 +24,7 @@ public class Hook : Tool
 		raycast.CastTo = new Vector3(0.0f, 0.0f, -100.0f);
 	}
 
-	public override void _Process(float delta)
+	public override void _PhysicsProcess(float delta)
 	{
 		if(raycast.IsColliding() && ((Node)raycast.GetCollider()).GetType() == typeof(Enemy))
 		{
